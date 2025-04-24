@@ -28,6 +28,7 @@ public class BasePage extends JPanel implements ActionListener {
         cartBtn.addActionListener(e -> PageController.showCartPage());
         searchBtn = new JButton("검");
         searchTextArea = new JTextField(30);
+        searchTextArea.addActionListener(e -> PageController.showSearchPage(searchTextArea.getText()));
         searchBtn.addActionListener(e -> PageController.showSearchPage(searchTextArea.getText()));
         searchPanel.add(searchTextArea);
         searchPanel.add(searchBtn);
@@ -41,7 +42,7 @@ public class BasePage extends JPanel implements ActionListener {
         categoryPanel = new JPanel();
         categoryPanel.setLayout(new BoxLayout(categoryPanel, BoxLayout.Y_AXIS));
         categoryPanel.setBackground(Color.RED);
-        String[] categories = {"Physics", "Mathematics", "Chemistry", "Biology"};
+        String[] categories = {"All", "Physics", "Mathematics", "Chemistry", "Biology"};
         for (String category : categories) {
             JButton button = new JButton(category);
             button.setAlignmentX(Component.CENTER_ALIGNMENT);

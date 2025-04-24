@@ -1,11 +1,10 @@
 package bookstore.controller;
 
-import bookstore.model.*;
 import bookstore.view.*;
-
-import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 import java.util.Stack;
+import javax.swing.*;
 
 public class PageController {
 
@@ -22,8 +21,12 @@ public class PageController {
     }
 
     public static void showCategoryPage(String categoryName) {
-        CategoryPage categoryPage = new CategoryPage(categoryName);
-        setPage(categoryPage.getCategoryPage());
+        try {
+            CategoryPage categoryPage = new CategoryPage(categoryName);
+            setPage(categoryPage.getCategoryPage());
+        } catch (HeadlessException ex) {
+        } catch (SQLException ex) {
+        }
     }
 
     public static void showDetailPage(String bookId) {
@@ -32,8 +35,12 @@ public class PageController {
     }
 
     public static void showSearchPage(String keyword) {
-        SearchPage searchPage = new SearchPage(keyword);
-        setPage(searchPage.getSearchPage());
+        try {
+            SearchPage searchPage = new SearchPage(keyword);
+            setPage(searchPage.getSearchPage());
+        } catch (HeadlessException ex) {
+        } catch (SQLException ex) {
+        }
     }
 
     public static void showCartPage() {

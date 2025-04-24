@@ -1,9 +1,10 @@
 package bookstore.view;
 
+import bookstore.controller.CreateBookPanels;
+import bookstore.model.Book;
+import bookstore.view.component.QuantitySelector;
 import java.awt.*;
 import javax.swing.*;
-import bookstore.model.Book;
-import bookstore.controller.CreateBookPanels;
 
 public class DetailPage extends BasePage {
 
@@ -11,9 +12,10 @@ public class DetailPage extends BasePage {
     GridBagConstraints gbc = new GridBagConstraints();
     JTextArea titleArea, authorArea;
     String[][] BookData = Book.TestBookData;
-    JPanel detailPanel, leftPanel, rightPanel, titlePanel, authorPanel, pricePanel;
+    JPanel detailPanel, leftPanel, rightPanel, titlePanel, authorPanel, pricePanel, totalPricePanel;
     JPanel[] bookPanel;
-    JLabel priceLabel;
+    JLabel priceLabel, totlaPriceLabel;
+    String[] bookDatum;
 
     public DetailPage(String bookId) {
         mainPanel.setBackground(Color.PINK);
@@ -31,7 +33,7 @@ public class DetailPage extends BasePage {
         makegbc(rightPanel, 1, 0, 1, 1);
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
 
-        String[] bookDatum = new String[7];
+        bookDatum = new String[7];
         for (String[] book : BookData) {
             if (book[0].equals(bookId)) {
                 bookDatum[0] = book[0]; //id
@@ -76,6 +78,13 @@ public class DetailPage extends BasePage {
         priceLabel.setText("가격 : " + bookDatum[3] + " 원 / 권");
         pricePanel.add(priceLabel);
         rightPanel.add(pricePanel);
+        QuantitySelector selector = new QuantitySelector();
+        int unitprice = Integer.parseInt(bookDatum[3]);
+        totalPricePanel = new JPanel();
+        totlaPriceLabel = new JLabel();
+        totalPricePanel.add(selector.bindTotalPriceLabel(totlaPriceLabel, unitprice));
+        rightPanel.add(selector);
+        rightPanel.add(totalPricePanel);
 
         detailPanel.add(leftPanel);
         detailPanel.add(rightPanel);

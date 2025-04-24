@@ -1,9 +1,9 @@
 package bookstore.view;
 
-import java.awt.*;
-import javax.swing.*;
 import bookstore.controller.CreateBookPanels;
 import bookstore.model.Book;
+import java.awt.*;
+import javax.swing.*;
 
 public class MainPage extends BasePage{
 
@@ -13,14 +13,16 @@ public class MainPage extends BasePage{
     String[][] recommendBookData = Book.TestBookData;
 
     public MainPage() throws HeadlessException {
-        mainPanel.setBackground(Color.GREEN);
+        mainPanel.setBackground(new Color(255, 95, 162));
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         recentTitleLabel = new JLabel("▼ 최신 도서 ▼");
         recentTitleLabel.setPreferredSize(new Dimension(400, 50));
         recentTitleLabel.setMaximumSize(new Dimension(4000, 30));  // 늘어나지 않게
+        recentTitleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         recommendTitleLabel = new JLabel("▼ 추천 도서 ▼");
         recommendTitleLabel.setPreferredSize(new Dimension(400, 50));
         recommendTitleLabel.setMaximumSize(new Dimension(4000, 30));  // 늘어나지 않게
+        recommendTitleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         recentBookPanel = new JPanel();
         recentBookPanel.setLayout(new GridLayout(1, 4, 10, 10));
         bookPanels = CreateBookPanels.createBookPanels(recommendBookData);
