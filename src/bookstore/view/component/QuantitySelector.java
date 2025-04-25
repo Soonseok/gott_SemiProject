@@ -2,6 +2,7 @@ package bookstore.view.component;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.function.Consumer;
 import javax.swing.*;
 
 public class QuantitySelector extends JPanel {
@@ -15,6 +16,11 @@ public class QuantitySelector extends JPanel {
     private JLabel targetLabel;
     private int unitPrice = 0;
     private int quantity = 1;
+
+    private Consumer<Integer> quantityChangeListener;
+    public void setOnQuantityChange(Consumer<Integer> listener) {
+        this.quantityChangeListener = listener;
+    }
 
     public QuantitySelector() {
         initComponents();
@@ -114,6 +120,9 @@ public class QuantitySelector extends JPanel {
         if (targetLabel != null) {
             int total = quantity * unitPrice;
             targetLabel.setText("총 " + total + "원");
+        }
+        if (quantityChangeListener != null) {
+            quantityChangeListener.accept(quantity);
         }
     }
 }

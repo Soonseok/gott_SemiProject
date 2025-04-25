@@ -8,7 +8,6 @@ import java.util.List;
 public class BookRepository {
 
     private static List<Book> books = new ArrayList<>();
-    private static boolean initialized = false;
 
     public static void addBook(Book book) {
         books.add(book);
@@ -91,7 +90,7 @@ public class BookRepository {
         // String id는 p_0과 같은 형태
         List<Book> selectedBook = new ArrayList<>();
 
-        String sql = "select * from bookdb where book_id = " + id;
+        String sql = "select * from bookdb where book_id = '" + id + "'";
         try (Connection con = DBConnection.makeConnection(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Book book = new Book();
@@ -107,5 +106,56 @@ public class BookRepository {
             e.printStackTrace();
         }
         return selectedBook;
+    }
+
+    public String getAuthorBiographyByBookId(String bookId) {
+        String biography = "";
+
+        String sql = "SELECT author_abstract " +
+                     "FROM bookdb b JOIN authordb a ON b.author = a.author " +
+                     "WHERE b.book_id = ?";
+
+        try (Connection con = DBConnection.makeConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, bookId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                biography = rs.getString("author_abstract");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return biography;
+    }
+
+    public String[][] getBooksByIds(List<String> ids) {
+        String[][] result = new String[ids.size()][6];
+    
+        String sql = "SELECT * FROM bookdb WHERE book_id = ?";
+    
+        try (Connection con = DBConnection.makeConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+    
+            for (int i = 0; i < ids.size(); i++) {
+                stmt.setString(1, ids.get(i));
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        result[i][0] = rs.getString("book_id");
+                        result[i][1] = rs.getString("author");
+                        result[i][2] = rs.getString("title");
+                        result[i][3] = String.valueOf(rs.getInt("price"));
+                        result[i][4] = rs.getString("cover_image");
+                        result[i][5] = rs.getString("book_abstract");
+                    }
+                }
+            }
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    
+        return result;
     }
 }

@@ -1,9 +1,12 @@
 package bookstore.view;
 
 import bookstore.controller.CreateBookPanels;
+import bookstore.controller.PageController;
 import bookstore.model.Book;
 import bookstore.model.BookRepository;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.*;
@@ -33,7 +36,7 @@ public class CategoryPage extends BasePage {
             case "Biology" ->
                 BookData = repo.getBooksByCategory("b");
         }
-
+        
         categoryTitleLabel = new JLabel("분류 : "+categoryName+ "   총 "+ BookData.size()+"권");
         categoryTitleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         categoryTitleLabel.setPreferredSize(new Dimension(400, 50));
@@ -44,7 +47,17 @@ public class CategoryPage extends BasePage {
 
         bookPanels = CreateBookPanels.createBookPanels(BookData);
         for (int i = 0; i < bookPanels.length; i++) {
+            final int index = i;
             categoryBookPanel.add(bookPanels[i]);
+            bookPanels[i].addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e){
+                    Book clickedBook = BookData.get(index);
+                    String bookId = clickedBook.getBookId();
+                    PageController.showDetailPage(bookId);
+                    System.out.println(bookId);
+                }
+            });
         }
         // mainPanel.add(categoryTitleLabel);
         // mainPanel.add(categoryBookPanel);
