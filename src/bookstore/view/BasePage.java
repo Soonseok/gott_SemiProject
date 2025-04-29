@@ -21,7 +21,9 @@ public class BasePage extends JPanel implements ActionListener {
         topPanel = new JPanel();
         searchPanel = new JPanel(new GridLayout(1, 2));
         backBtn = new JButton("뒤");
+        backBtn.addActionListener(e -> PageController.goBack());
         frontBtn = new JButton("앞");
+        frontBtn.addActionListener(e -> PageController.goForward());
         mainBtn = new JButton("홈");
         mainBtn.addActionListener(e -> PageController.showMainPage());
         cartBtn = new JButton("장");

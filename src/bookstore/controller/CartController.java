@@ -1,32 +1,35 @@
 package bookstore.controller;
 
-import java.util.HashMap;
+import bookstore.model.BookRepository;
+import bookstore.model.Cart;
 import java.util.Map;
 
 public class CartController {
-    private static Map<String, Integer> cartItems = new HashMap<>();
+
+    private static Cart cart = new Cart();
 
     public static void addToCart(String bookId, int quantity) {
-        cartItems.put(bookId, cartItems.getOrDefault(bookId, 0) + quantity);
+        cart.addToCart(bookId, quantity);
     }
 
     public static void removeFromCart(String bookId) {
-        cartItems.remove(bookId);
+        cart.removeFromCart(bookId);
     }
 
     public static void clearCart() {
-        cartItems.clear();
+        cart.clearCart();
     }
 
     public static Map<String, Integer> getCartItems() {
-        return cartItems;
+        return cart.getCartItems();
     }
-    
+
     public static void updateQuantity(String bookId, int quantity) {
-        if (quantity <= 0) {
-            cartItems.remove(bookId);
-        } else {
-            cartItems.put(bookId, quantity);
-        }
+        cart.updateQuantity(bookId, quantity);
     }
+
+    public static int getTotalPrice(BookRepository repo) {
+        return cart.getTotalPrice(repo);
+    }
+
 }

@@ -18,6 +18,7 @@ public class QuantitySelector extends JPanel {
     private int quantity = 1;
 
     private Consumer<Integer> quantityChangeListener;
+
     public void setOnQuantityChange(Consumer<Integer> listener) {
         this.quantityChangeListener = listener;
     }
@@ -106,7 +107,9 @@ public class QuantitySelector extends JPanel {
     }
 
     public void setQuantity(int quantity) {
+        this.quantity = quantity;
         quantityField.setText(String.valueOf(quantity));
+        updateLabel();
     }
 
     public JLabel bindTotalPriceLabel(JLabel label, int pricePerUnit) {
