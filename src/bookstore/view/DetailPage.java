@@ -58,23 +58,27 @@ public class DetailPage extends BasePage {
 
         String bookAbstract = bookDatum[5];
         String authorAbstract = bookDatum[6];
+
         titleArea = new JTextArea(bookAbstract);
+        titleArea.setFont(new Font("Times NewRoman", Font.PLAIN, 14));
         titleArea.setLineWrap(true);
         titleArea.setWrapStyleWord(true);
         titleArea.setEditable(false);
-        titleArea.setPreferredSize(new Dimension(400, 200)); // 크기 조정 (너비, 높이)
-
+        JScrollPane titleScroll = new JScrollPane(titleArea);
+        titleScroll.setPreferredSize(new Dimension(400, 250));
         titlePanel = new JPanel();
-        titlePanel.add(new JScrollPane(titleArea)); // 스크롤 추가
+        titlePanel.add(titleScroll);
 
         authorArea = new JTextArea(authorAbstract);
+        authorArea.setFont(new Font("Times NewRoman", Font.PLAIN, 14));
         authorArea.setLineWrap(true);
         authorArea.setWrapStyleWord(true);
         authorArea.setEditable(false);
-        authorArea.setPreferredSize(new Dimension(400, 200));
-
+        JScrollPane authorScroll = new JScrollPane(authorArea);
+        authorScroll.setPreferredSize(new Dimension(400, 250));
         authorPanel = new JPanel();
-        authorPanel.add(new JScrollPane(authorArea));
+        authorPanel.add(authorScroll);
+
         rightPanel.add(new JLabel("책 소개"));
         rightPanel.add(titlePanel);
         rightPanel.add(new JLabel("저자 소개"));

@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class BasePage extends JPanel implements ActionListener {
-    
+
     JPanel basePanel, mainPanel, topPanel, categoryPanel, searchPanel;
     JButton backBtn, frontBtn, mainBtn, cartBtn, searchBtn;
     JTextField searchTextArea;
@@ -19,22 +19,22 @@ public class BasePage extends JPanel implements ActionListener {
         basePanel.setLayout(new BorderLayout());
         mainPanel = new JPanel();
         topPanel = new JPanel();
-        searchPanel = new JPanel(new GridLayout(1, 2));
-        backBtn = new JButton("뒤");
+        searchPanel = new JPanel(new BorderLayout());
+        backBtn = new JButton("뒤로가기");
         backBtn.addActionListener(e -> PageController.goBack());
-        frontBtn = new JButton("앞");
+        frontBtn = new JButton("앞으로가기");
         frontBtn.addActionListener(e -> PageController.goForward());
-        mainBtn = new JButton("홈");
+        mainBtn = new JButton("메인페이지");
         mainBtn.addActionListener(e -> PageController.showMainPage());
-        cartBtn = new JButton("장");
+        cartBtn = new JButton("장바구니");
         cartBtn.addActionListener(e -> PageController.showCartPage());
-        searchBtn = new JButton("검");
+        searchBtn = new JButton("검색");
+        searchBtn.addActionListener(e -> PageController.showSearchPage(searchTextArea.getText()));
         searchTextArea = new JTextField(30);
         searchTextArea.addActionListener(e -> PageController.showSearchPage(searchTextArea.getText()));
-        searchBtn.addActionListener(e -> PageController.showSearchPage(searchTextArea.getText()));
-        searchPanel.add(searchTextArea);
-        searchPanel.add(searchBtn);
-        topPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        searchPanel.add(searchTextArea, BorderLayout.CENTER);
+        searchPanel.add(searchBtn, BorderLayout.EAST);
+        topPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         topPanel.setBackground(Color.BLUE);
         topPanel.add(mainBtn);
         topPanel.add(backBtn);
@@ -51,8 +51,9 @@ public class BasePage extends JPanel implements ActionListener {
             button.setMaximumSize(new Dimension(200, 50));
             button.addActionListener(e -> PageController.showCategoryPage(category));
             categoryPanel.add(button);
+            categoryPanel.add(Box.createVerticalStrut(3));
         }
-        
+
         basePanel.add(topPanel, BorderLayout.NORTH);
         basePanel.add(categoryPanel, BorderLayout.WEST);
         basePanel.add(mainPanel, BorderLayout.CENTER);
