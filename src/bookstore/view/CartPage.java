@@ -35,10 +35,7 @@ public class CartPage extends BasePage {
         if (books.length == 0) {
             JLabel emptyAllert = new JLabel("장바구니가 비어 있습니다.");
             emptyAllert.setFont(new Font("맑은 고딕", Font.BOLD, 30));
-            emptyAllert.setAlignmentX(emptyAllert.CENTER_ALIGNMENT);
-            mainPanel.add(Box.createVerticalGlue());
             mainPanel.add(emptyAllert);
-            mainPanel.add(Box.createVerticalGlue());
         } else {
 
             for (int k = 0; k < books.length; k++) {

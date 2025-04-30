@@ -60,7 +60,7 @@ public class DetailPage extends BasePage {
         String authorAbstract = bookDatum[6];
 
         titleArea = new JTextArea(bookAbstract);
-        titleArea.setFont(new Font("Times NewRoman", Font.PLAIN, 14));
+        titleArea.setFont(new Font("Times New Roman", Font.PLAIN, 14));
         titleArea.setLineWrap(true);
         titleArea.setWrapStyleWord(true);
         titleArea.setEditable(false);
@@ -70,7 +70,7 @@ public class DetailPage extends BasePage {
         titlePanel.add(titleScroll);
 
         authorArea = new JTextArea(authorAbstract);
-        authorArea.setFont(new Font("Times NewRoman", Font.PLAIN, 14));
+        authorArea.setFont(new Font("Times New Roman", Font.PLAIN, 14));
         authorArea.setLineWrap(true);
         authorArea.setWrapStyleWord(true);
         authorArea.setEditable(false);

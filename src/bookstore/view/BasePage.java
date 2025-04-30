@@ -1,6 +1,7 @@
 package bookstore.view;
 
 import bookstore.controller.PageController;
+import bookstore.login.LoginController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +10,7 @@ import javax.swing.*;
 public class BasePage extends JPanel implements ActionListener {
 
     JPanel basePanel, mainPanel, topPanel, categoryPanel, searchPanel;
-    JButton backBtn, frontBtn, mainBtn, cartBtn, searchBtn;
+    JButton backBtn, frontBtn, mainBtn, cartBtn, searchBtn, loginBtn;
     JTextField searchTextArea;
 
     public BasePage() throws HeadlessException {
@@ -20,6 +21,8 @@ public class BasePage extends JPanel implements ActionListener {
         mainPanel = new JPanel();
         topPanel = new JPanel();
         searchPanel = new JPanel(new BorderLayout());
+        loginBtn = new JButton("로그인");
+        loginBtn.addActionListener(e -> LoginController.handleLoginButton(loginBtn));
         backBtn = new JButton("뒤로가기");
         backBtn.addActionListener(e -> PageController.goBack());
         frontBtn = new JButton("앞으로가기");
@@ -41,6 +44,7 @@ public class BasePage extends JPanel implements ActionListener {
         topPanel.add(frontBtn);
         topPanel.add(searchPanel);
         topPanel.add(cartBtn);
+        topPanel.add(loginBtn);
         categoryPanel = new JPanel();
         categoryPanel.setLayout(new BoxLayout(categoryPanel, BoxLayout.Y_AXIS));
         categoryPanel.setBackground(Color.RED);
@@ -62,5 +66,14 @@ public class BasePage extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    public void updateLoginButtonText() {
+        if (LoginController.isLoggedIn()) {
+            String name = LoginController.getLoggedInUserName();
+            loginBtn.setText(name); // 유저 이름
+        } else {
+            loginBtn.setText("로그인");
+        }
     }
 }

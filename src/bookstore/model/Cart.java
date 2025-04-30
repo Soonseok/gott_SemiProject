@@ -9,6 +9,13 @@ public class Cart {
 
     private Map<String, Integer> cartItems = new HashMap<>();
 
+    public Cart(Map<String, Integer> items) {
+        this.cartItems = new HashMap<>(items);
+    }    
+    public Cart() {
+        this.cartItems = new HashMap<>();
+    }    
+
     public void addToCart(String bookId, int quantity) {
         cartItems.put(bookId, cartItems.getOrDefault(bookId, 0) + quantity);
     }
