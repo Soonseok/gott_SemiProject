@@ -67,7 +67,6 @@ public class loginScreen extends JFrame {
         jLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("로긴로긴");
                 String inputId = jtf1.getText();
                 String inputPw = new String(jtf2.getPassword());
 
@@ -111,7 +110,6 @@ public class loginScreen extends JFrame {
         join.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("횐갑횐갑");
                 new JoinScreen(onLoginSuccess);
                 dispose();
             }

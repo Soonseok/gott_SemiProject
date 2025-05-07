@@ -11,7 +11,6 @@ public class LoginController {
     private static String loggedInUserName = null;
 
     public static void handleLoginButton(JButton loginBtn) {
-        loginBtn.setText("로그인");
         if (isLoggedIn) {
             int result = JOptionPane.showConfirmDialog(null, "로그아웃 하시겠습니까?", "로그아웃", JOptionPane.YES_NO_OPTION);
             if (result == JOptionPane.YES_OPTION) {
