@@ -2,6 +2,7 @@ package bookstore.login;
 
 import bookstore.controller.CartController;
 import bookstore.controller.PageController;
+import static bookstore.controller.PageController.previousPageHistory;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -19,6 +20,7 @@ public class LoginController {
                 loginBtn.setText("로그인");
                 PageController.showMainPage();
                 CartController.clearCart();
+                previousPageHistory.pop();
             }
         } else {
             new loginScreen(userName -> {

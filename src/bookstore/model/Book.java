@@ -2,12 +2,6 @@ package bookstore.model;
 
 public class Book {
 
-    // public static String[][] recommendBookId = {
-    //     {"p_28", "", "", "", "", "", ""},{"p_17", "", "", "", "", "", ""},{"p_16", "", "", "", "", "", ""},{"p_29", "", "", "", "", "", ""}
-    // };
-    // public static String[][] latesetBookId = {
-    //     {"p_28", "", "", "", "", "", ""},{"p_17", "", "", "", "", "", ""},{"p_16", "", "", "", "", "", ""},{"p_29", "", "", "", "", "", ""}
-    // };
     private String bookId;
     private String author;
     private String title;

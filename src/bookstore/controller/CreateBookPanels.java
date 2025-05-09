@@ -23,9 +23,9 @@ public class CreateBookPanels {
 
             // 표지 썸네일
             JLabel imgLabel = new JLabel();
-            ImageIcon originalIcon = new ImageIcon("C:\\java2025\\java_home\\SemiProject\\coverImages\\" + book.getImagePath());
+            ImageIcon originalIcon = new ImageIcon("coverImages\\" + book.getImagePath());
             if (originalIcon.getImageLoadStatus() != 8) {
-                originalIcon = new ImageIcon("C:\\java2025\\java_home\\SemiProject\\coverImages\\_default.jpg");
+                originalIcon = new ImageIcon("coverImages\\_default.jpg");
             }
             Image originalImg = originalIcon.getImage();
             Image resizedImg = originalImg.getScaledInstance(200, 300, Image.SCALE_SMOOTH);
@@ -86,9 +86,9 @@ public class CreateBookPanels {
 
             // 표지 썸네일
             JLabel imgLabel = new JLabel();
-            ImageIcon originalIcon = new ImageIcon("C:\\java2025\\java_home\\SemiProject\\coverImages\\" + imgPath);
+            ImageIcon originalIcon = new ImageIcon("coverImages\\" + imgPath);
             if (originalIcon.getImageLoadStatus() != 8) {
-                originalIcon = new ImageIcon("C:\\java2025\\java_home\\SemiProject\\coverImages\\_default.jpg");
+                originalIcon = new ImageIcon("coverImages\\_default.jpg");
             }
             Image originalImg = originalIcon.getImage();
             Image resizedImg = originalImg.getScaledInstance(200, 300, Image.SCALE_SMOOTH);
@@ -147,9 +147,9 @@ public class CreateBookPanels {
 
             // 표지 썸네일
             JLabel imgLabel = new JLabel();
-            ImageIcon originalIcon = new ImageIcon("C:\\java2025\\java_home\\SemiProject\\coverImages\\" + imgPath);
+            ImageIcon originalIcon = new ImageIcon("coverImages\\" + imgPath);
             if (originalIcon.getImageLoadStatus() != 8) {
-                originalIcon = new ImageIcon("C:\\java2025\\java_home\\SemiProject\\coverImages\\_default.jpg");
+                originalIcon = new ImageIcon("coverImages\\_default.jpg");
             }
             Image originalImg = originalIcon.getImage();
             Image resizedImg = originalImg.getScaledInstance(400, 600, Image.SCALE_SMOOTH);
@@ -205,9 +205,9 @@ public class CreateBookPanels {
 
             // 표지 썸네일
             JLabel imgLabel = new JLabel();
-            ImageIcon originalIcon = new ImageIcon("C:\\java2025\\java_home\\SemiProject\\coverImages\\" + imgPath);
+            ImageIcon originalIcon = new ImageIcon("coverImages\\" + imgPath);
             if (originalIcon.getImageLoadStatus() != 8) {
-                originalIcon = new ImageIcon("C:\\java2025\\java_home\\SemiProject\\coverImages\\_default.jpg");
+                originalIcon = new ImageIcon("coverImages\\_default.jpg");
             }
             Image originalImg = originalIcon.getImage();
             Image resizedImg = originalImg.getScaledInstance(400, 600, Image.SCALE_SMOOTH);
@@ -267,9 +267,9 @@ public class CreateBookPanels {
 
             // 표지 썸네일
             JLabel imgLabel = new JLabel();
-            ImageIcon originalIcon = new ImageIcon("C:\\java2025\\java_home\\SemiProject\\coverImages\\" + imgPath);
+            ImageIcon originalIcon = new ImageIcon("coverImages\\" + imgPath);
             if (originalIcon.getImageLoadStatus() != 8) {
-                originalIcon = new ImageIcon("C:\\java2025\\java_home\\SemiProject\\coverImages\\_default.jpg");
+                originalIcon = new ImageIcon("coverImages\\_default.jpg");
             }
             Image originalImg = originalIcon.getImage();
             Image resizedImg = originalImg.getScaledInstance(150, 225, Image.SCALE_SMOOTH);
